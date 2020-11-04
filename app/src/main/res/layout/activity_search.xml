@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/padding_50dp"
+    android:paddingEnd="@dimen/padding_50dp"
+    tools:context=".components.search.SearchActivity">
+
+    <TextView
+        android:id="@+id/tv_title_github_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_50dp"
+        android:text="@string/title_github_user"
+        android:textSize="@dimen/text_size_20sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_title_explorer"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_explorer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_3dp"
+        android:layout_marginLeft="@dimen/margin_3dp"
+        android:text="@string/title_explorer"
+        android:textSize="@dimen/text_size_20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_title_github_user"
+        app:layout_constraintTop_toTopOf="@id/tv_title_github_user" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_github_logo"
+        android:layout_width="@dimen/size_github_logo_200dp"
+        android:layout_height="@dimen/size_github_logo_200dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:src="@drawable/logo_github"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_explorer" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_search_key_outline"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:hint="@string/hint_search_github_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_github_logo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_search_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeActionLabel="@string/search" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_btn_height"
+        android:text="@string/search"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_search"
+        app:iconGravity="textStart"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_search_key_outline" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_search">
+
+        <TextView
+            android:id="@+id/tv_loading_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/text_searching"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pb_search_users"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/tv_loading_description" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_github_users"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_alert"
+            android:layout_width="@dimen/size_alert_icon_70dp"
+            android:layout_height="@dimen/size_alert_icon_70dp"
+            android:src="@drawable/ic_alert"
+            android:tint="@android:color/darker_gray"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tv_common_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_common_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_alert_some_thing_went_wrong"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_alert" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_face"
+            android:layout_width="@dimen/size_alert_icon_70dp"
+            android:layout_height="@dimen/size_alert_icon_70dp"
+            android:src="@drawable/ic_face"
+            android:tint="@android:color/darker_gray"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tv_no_user_found"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_no_user_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_no_users_found"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_face"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

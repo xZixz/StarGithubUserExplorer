@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">StarGithubUserExplorer</string>
+    <string name="search">Search</string>
+    <string name="text_searching">Searching…</string>
+    <string name="title_github_user">Github User</string>
+    <string name="title_explorer">Explorer</string>
+    <string name="hint_search_github_user">Enter some keyword</string>
+    <string name="text_alert_some_thing_went_wrong">Oops! Something went wrong…</string>
+    <string name="text_no_users_found">No Users Found</string>
+    <string name="retry">Retry</string>
+    <plurals name="followers_num">
+        <item quantity="one">%s follower</item>
+        <item quantity="other">%s followers</item>
+    </plurals>
+</resources>
