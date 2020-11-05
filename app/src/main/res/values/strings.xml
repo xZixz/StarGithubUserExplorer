@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StarGithubUserExplorer</string>
+    <string name="app_name">Github User Explorer</string>
     <string name="search">Search</string>
     <string name="text_searching">Searching…</string>
     <string name="title_github_user">Github User</string>
